@@ -23,8 +23,11 @@ endif
 inc_xxhash = include_directories('.')
 lib_xxhash = static_library('xxhash', 'xxhash.c')
 dll_xxhash = shared_library('xxhash', 'xxhash.c')
+
+dep_xxhash = declare_dependency(include_directories: inc_xxhash, link_with: lib_xxhash)
+
 exe_xxhsum = executable('xxhsum', 'xxhsum.c', link_with: lib_xxhash)
-dep_xxhsum = declare_dependency(include_directories: inc_xxhash, link_with: lib_xxhash)
+
 
 #
 # TODO: Rename tests accordingly
